@@ -8,12 +8,11 @@ import productsArr from './data/products.json';
 
 const shopName = 'ZARA-Беларусь';
 
+const rootNode = document.getElementById('container')
 
+const root = ReactDOM.createRoot(rootNode)
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Shop shopName={shopName} productsArr={productsArr} />
-  </React.StrictMode>,
-  document.getElementById('container')
-);
+root.render(
+  <Shop shopName={shopName} productsArr={productsArr} />
+)
 
