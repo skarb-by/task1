@@ -8,10 +8,10 @@ const Product = ({ product}) => {
   return (
     <tr className='Product'>
       <td className='productsImg'>
-        <img src={product.url} alt="" />
+        <img src={product.productUrl} alt="" />
       </td>
       <td>
-        {product.name}
+        {product.productName}
       </td>
       <td>
         {product.productDescription}
@@ -23,10 +23,10 @@ const Product = ({ product}) => {
         {product.productStructure1}
       </td>
       <td>
-        {`${product.price} BYN`}
+        {`${product.productPrice} BYN`}
       </td>
       <td>
-        {`${product.count} шт`}
+        {`${product.productCount} шт`}
       </td>
       <td>
         <button disabled="disabled">
