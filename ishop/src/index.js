@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ReactDOM from 'react-dom';
+import ReactDOMClient from 'react-dom/client';
 import './index.css';
 import Shop from './components/Shop';
 
@@ -10,7 +10,7 @@ const shopName = 'ZARA-Беларусь';
 
 const rootNode = document.getElementById('container')
 
-const root = ReactDOM.createRoot(rootNode)
+const root = ReactDOMClient.createRoot(rootNode)
 
 root.render(
   <Shop shopName={shopName} productsArr={productsArr} />
