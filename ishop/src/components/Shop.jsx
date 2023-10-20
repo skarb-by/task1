@@ -1,7 +1,43 @@
 import './Shop.css';
-import React, { useState } from 'react';
+import React from 'react';
 import Product from './Product';
+import PropTypes from 'prop-types';
+  
+class Shop extends React.Component {
 
+  static propTypes = {
+    shopName: PropTypes.string
+      
+  }
+
+  render() {
+    const productsElement=this.props.productsArr.map((product) => {
+      return (
+        <Product product={product} key={product.id}/>
+      )
+    });
+
+    const theadArr = ["Фотография", "Название", "Описание", "Цвет", "Состав", "Цена", "Количество", "Кнопка"].map((e) => {
+      return <td key={e} className='ProductsThead'>{e}</td>
+    });
+
+    return (
+      <table className='ShopTable'>
+        <caption className='ShopCaption'>{this.props.shopName}</caption>
+        <thead className='ShopName'>
+          <tr>
+            {theadArr}
+          </tr>
+        </thead>
+        <tbody>
+          {productsElement}
+        </tbody>
+      </table>
+    );
+  }
+}
+
+/*
 const Shop = ({ shopName, productsArr }) => {
 
   const [products] = useState(productsArr);
@@ -31,5 +67,5 @@ const Shop = ({ shopName, productsArr }) => {
     </table>
   );
 }
-
+*/
 export default Shop;
