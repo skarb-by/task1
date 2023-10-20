@@ -3,9 +3,10 @@ import React from 'react';
 
 const Product = ({ product}) => {
 
-
-
   return (
+   
+
+    
     <tr className='Product'>
       <td className='productsImg'>
         <img src={product.productUrl} alt="" />
@@ -34,6 +35,7 @@ const Product = ({ product}) => {
         </button>
       </td>
     </tr>
+ 
   );
 }
 
