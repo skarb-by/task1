@@ -13,7 +13,7 @@ const Shop = ({ shopName, productsArr }) => {
   const productsElement = products.map((product) => {
     return (
       <Product product={product}
-               key={product.productName} />
+               key={product.id} />
     )
   });
 
