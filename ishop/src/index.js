@@ -6,13 +6,13 @@ import Shop from './components/Shop';
 
 import productsArr from './data/products.json';
 
-const shopName = 'ZARA-Беларусь';
+const shopNameText = 'ZARA-Беларусь';
 
 const rootNode = document.getElementById('container')
 
 const root = ReactDOMClient.createRoot(rootNode)
 
 root.render(
-  <Shop shopName={shopName} productsArr={productsArr} />
+  <Shop shopName={shopNameText} productsArr={productsArr} />
 )
 

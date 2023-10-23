@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 class Shop extends React.Component {
 
   static propTypes = {
-    shopName: PropTypes.string
+    shopName: PropTypes.string.isRequired,
       
   }
 
