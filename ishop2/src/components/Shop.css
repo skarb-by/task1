@@ -1,0 +1,52 @@
+body {
+    background-color:white;
+}
+
+.ShopTable {
+    background-color: whitesmoke;
+    border-spacing: 0 10px;
+    padding: 10px;
+    margin: auto;
+    border-collapse: collapse
+}
+
+.ShopTable  {
+    margin-bottom: 10px;
+   
+}
+
+.ShopCaption {
+    font-size: 50px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.ShopTable .Product .productsImg img {
+    height: 300px;
+}
+
+.Product {
+    cursor: pointer;
+}
+
+.Product,
+.ProductsThead {
+    text-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    
+}
+
+.ShopTable td {
+    padding: 0 5px;
+    color: black;
+    border: 2px solid black;
+}
+
+.Product:hover td {
+    color: rgb(131, 119, 119);
+}
+
+.Product.Active {
+    background-color: rgb(203, 203, 203);
+}
