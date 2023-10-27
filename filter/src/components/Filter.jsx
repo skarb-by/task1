@@ -11,15 +11,15 @@ class Filter extends React.Component {
 
 }
 
-onChange = (eo) => {
+onChange = (element) => {
   
- this.setState( { input: eo.target.value.toLowerCase()} );
+ this.setState( { input: element.target.value.toLowerCase()} );
   
 }
 
-checkbox = (eo) => {
+checkbox = (element) => {
 
-  this.setState( { checked: eo.target.checked } );
+  this.setState( { checked: element.target.checked } );
  
 }
 
@@ -33,7 +33,7 @@ clear = () => {
 render() {
   const {data, input, checked} = this.state
   const dataElement = [...data].filter((element) => element.includes(input)).map((element)  =>  <p key={element}>{element}</p>)
-  const filter = [...data].sort().filter((element) => element.includes(input)).map((element)  =>  <p key={element}>{element}</p>)
+  const dataFilter = [...data].sort().filter((element) => element.includes(input)).map((element)  =>  <p key={element}>{element}</p>)
   return (
     <div className="Filter">
       <input type="checkbox" checked={this.state.checked} onChange={ this.checkbox}/>
@@ -42,11 +42,11 @@ render() {
         сброс
       </button>
       <div className='FilterOut'>
-        {checked ?  filter : dataElement}
+        {checked ?  dataFilter : dataElement}
 
       </div>
       <div><span>Вы ввели: {input}</span></div>
-<div><span> В алфавитном порядке? {checked  ? 'ДА' : 'НЕТ'}</span></div>
+      <div><span> В алфавитном порядке? {checked  ? 'ДА' : 'НЕТ'}</span></div>
       
     </div>
   );
