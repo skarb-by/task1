@@ -22,7 +22,7 @@ class Product extends React.Component {
       element.stopPropagation();
       const delProduct = window.confirm("Удалить товар?");
       delProduct && this.props.deleteProduct(this.props.product.id)
-    }
+    };
 activeMod = () => {
     this.props.setActive(this.props.onActive ? null : this.props.product.id)
     }

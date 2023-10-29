@@ -4,7 +4,6 @@ import React from 'react';
 class Filter extends React.Component {
   
   state = {
-    data: this.props.data,
     input: '',
     checked: false,
  
@@ -31,7 +30,8 @@ clear = () => {
 }
 
 render() {
-  const {data, input, checked} = this.state
+  const data = this.props.data
+  const { input, checked} = this.state
   const dataElement = [...data].filter((element) => element.includes(input)).map((element)  =>  <p key={element}>{element}</p>)
   const dataFilter = [...data].sort().filter((element) => element.includes(input)).map((element)  =>  <p key={element}>{element}</p>)
   return (

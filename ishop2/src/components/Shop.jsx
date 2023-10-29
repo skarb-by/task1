@@ -28,12 +28,13 @@ class Shop extends React.Component {
 }
 
   deleteProduct = (deleteId) => {
-    const products = this.state.products;
-    this.setState({products: products.filter((element) => element.id !== deleteId)})
+    
+    const newProducts = this.state.products.filter((element) => element.id !== deleteId);
+    this.setState({products: newProducts})
 }
 
 setActive = (id) => {
-  return this.setState({activeId: id})
+ this.setState({activeId: id})
 }
 
   render() {
