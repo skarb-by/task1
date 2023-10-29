@@ -1,5 +1,5 @@
 body {
-    background-color:white;
+    background-color: white;
 }
 
 .ShopTable {
@@ -10,9 +10,9 @@ body {
     border-collapse: collapse
 }
 
-.ShopTable  {
+.ShopTable {
     margin-bottom: 10px;
-   
+
 }
 
 .ShopCaption {
@@ -34,7 +34,7 @@ body {
     text-align: center;
     align-items: center;
     box-sizing: border-box;
-    
+
 }
 
 .ShopTable td {

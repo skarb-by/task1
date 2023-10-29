@@ -15,6 +15,6 @@ const rootNode = document.getElementById('container')
 const root = ReactDOMClient.createRoot(rootNode)
 
 root.render(
-  <Shop shopName={shopNameText} productsArr={productsArr}  />
+  <Shop shopName={shopNameText} productsArr={productsArr} />
 )
 

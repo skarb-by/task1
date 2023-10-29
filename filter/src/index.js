@@ -11,7 +11,7 @@ const rootNode = document.getElementById('container')
 const root = ReactDOMClient.createRoot(rootNode)
 
 root.render(
-  <Filter  data={ data} />
+  <Filter data={data} />
 )
 
 

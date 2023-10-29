@@ -1,12 +1,13 @@
 .Filter {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .FilterOut {
-    width: 230px;
-    height: 200px;
-    border: 1px solid black;
-    margin: 10px auto 0;
-    overflow: auto;
-  }
+  text-align: center;
+  margin-top: 20px;
+}
+
+.FilterOut {
+  width: 230px;
+  height: 200px;
+  border: 1px solid black;
+  margin: 10px auto 0;
+  overflow: auto;
+  white-space: pre
+}

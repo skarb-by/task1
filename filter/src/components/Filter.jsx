@@ -1,59 +1,66 @@
-import './Filter.css';
-import React from 'react';
+import "./Filter.css";
+import React from "react";
 
 class Filter extends React.Component {
-  
   state = {
-    input: '',
+    input: "",
     checked: false,
- 
+    words: this.props.data,
+  };
 
-}
+  onChange = (eo) => {
+    this.setState({ input: eo.target.value.toLowerCase() }, this.processText);
+  };
 
-onChange = (element) => {
-  
- this.setState( { input: element.target.value.toLowerCase()} );
-  
-}
+  checkbox = (eo) => {
+    this.setState({ checked: eo.target.checked }, this.processText);
+  };
 
-checkbox = (element) => {
+  processText = () => {
+    let words = this.props.data.slice();
+    words = words.filter((w) => w);
+    if (this.state.input)
+      words = words.filter((w) => w.toLowerCase().includes(this.state.input));
+    if (this.state.checked) words.sort();
+    this.setState({ words });
+  };
 
-  this.setState( { checked: element.target.checked } );
- 
-}
+  clear = () => {
+    this.setState({ input: "", checked: false }, this.processText);
+  };
 
-clear = () => {
-  this.setState( { input: '' } );
-  this.setState( { data: this.props.data } );
-  this.setState( {checked: false } );
+  render() {
+    const styles = {
+      color: this.state.checked ? "green" : "red",
+      fontSize: "25px",
+    };
+    const style = { color: "red", fontSize: "25px" };
 
-}
-
-render() {
-  const data = this.props.data
-  const { input, checked} = this.state
-  const dataElement = [...data].filter((element) => element.includes(input)).map((element)  =>  <p key={element}>{element}</p>)
-  const dataFilter = [...data].sort().filter((element) => element.includes(input)).map((element)  =>  <p key={element}>{element}</p>)
-  return (
-    <div className="Filter">
-      <input type="checkbox" checked={this.state.checked} onChange={ this.checkbox}/>
-      <input type="text"   value={this.state.input} onChange={ this.onChange}/>
-          <button onClick={this.clear}>
-        сброс
-      </button>
-      <div className='FilterOut'>
-        {checked ?  dataFilter : dataElement}
-
+    return (
+      <div className="Filter">
+        <input
+          type="checkbox"
+          checked={this.state.checked}
+          onChange={this.checkbox}
+        />
+        <input type="text" value={this.state.input} onChange={this.onChange} />
+        <button onClick={this.clear}>сброс</button>
+        <div className="FilterOut">
+          <p> {this.state.words.join("\n")}</p>
+        </div>
+        <div>
+          <span>
+            Вы ввели: <span style={style}>{this.state.input}</span>
+          </span>
+        </div>
+        <div>
+          <span>
+            В алфавитном порядке? <span style={styles}>{this.state.checked ? "ДА" : "НЕТ"}</span>
+          </span>
+        </div>
       </div>
-      <div><span>Вы ввели: {input}</span></div>
-      <div><span> В алфавитном порядке? {checked  ? 'ДА' : 'НЕТ'}</span></div>
-      
-    </div>
-  );
-
-}
-
-
+    );
+  }
 }
 
 export default Filter;
