@@ -15,7 +15,7 @@ const defaultProduct = {
     productStructure1: '',
     productPrice: 0,
     productCount: 0,
-    productUrl: "https://raw.githubusercontent.com/skarb-by/task1/master/ishop/src/images/no.jpg"
+    productUrl: "https://raw.githubusercontent.com/skarb-by/task1/master/ishop3/src/images/no.jpg"
 }
 
 const placeholderArr = ['Редактирование', 'Создание'];
