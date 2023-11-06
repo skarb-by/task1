@@ -9,10 +9,13 @@ import PropTypes from 'prop-types';
 
 const defaultProduct = {
     id: -1,
-    name: '',
-    price: 0,
-    count: 0,
-    url: "https://raw.githubusercontent.com/skarb-by/task1/master/ishop/src/images/no.jpg"
+    productName: '',
+    productDescription: '',
+    productColor: '',
+    productStructure1: '',
+    productPrice: 0,
+    productCount: 0,
+    productUrl: "https://raw.githubusercontent.com/skarb-by/task1/master/ishop/src/images/no.jpg"
 }
 
 const placeholderArr = ['Редактирование', 'Создание'];
