@@ -1,0 +1,42 @@
+[
+    {
+        "id": 0,
+        "productName": "ФУТБОЛКА С ПРИНТОМ",
+        "productDescription": "Футболка оверсайз. Круглый вырез, контрастные принты спереди и сзади.",
+        "productColor": "ЖЕЛТОВАТО-БЕЛЫЙ",
+        "productStructure1": "100% ХЛОПОК",
+        "productPrice": 98.33,
+        "productUrl": "https://raw.githubusercontent.com/skarb-by/task1/master/ishop/src/images/1.jpg",
+        "productCount": 20
+    },
+    {
+        "id": 1,
+        "productName": "ФУТБОЛКА В ПОЛОСКУ",
+        "productDescription": "Свободная футболка с круглым вырезом и короткими рукавами.",
+        "productColor": "СИНИЙ",
+        "productStructure1": "100% ХЛОПОК",
+        "productPrice": 87.32,
+        "productUrl": "https://raw.githubusercontent.com/skarb-by/task1/master/ishop/src/images/2.jpg",
+        "productCount": 10
+    },
+    {
+        "id": 2,
+        "productName": "ФУТБОЛКА С КОНТРАСТНЫМИ ПРИНТАМИ",
+        "productDescription": "Футболка с круглым вырезом. Контрастные принты спереди и сзади.",
+        "productColor": "ЦВЕТ ЛЬДА",
+        "productStructure1": "100% ХЛОПОК",
+        "productPrice": 78.51,
+        "productUrl": "https://raw.githubusercontent.com/skarb-by/task1/master/ishop/src/images/3.jpg",
+        "productCount": 5
+    },
+    {
+        "id": 3,
+        "productName": "ФУТБОЛКА С КОНТРАСТНЫМИ ПРИНТАМИ СПЕРЕДИ",
+        "productDescription": "Футболка с короткими рукавами, круглым вырезом и контрастным принтом спереди.",
+        "productColor": "АНТРАЦИТОВО-СЕРЫЙ",
+        "productStructure1": "100% ХЛОПОК",
+        "productPrice": 79.41,
+        "productUrl": "https://raw.githubusercontent.com/skarb-by/task1/master/ishop/src/images/4.jpg",
+        "productCount": 13
+    }
+]

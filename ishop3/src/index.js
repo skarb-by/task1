@@ -2,20 +2,21 @@ import React from 'react';
 import { StrictMode } from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import './index.css';
-import Filter from './components/Filter.jsx';
+import App from '../src/App/App.jsx'
 
-const data = ['california', 'everything', 'aboveboard', 'washington', 'basketball', 'weathering', 'characters', 'literature', 'contraband', 'appreciate'];
+import productsArr from './data/products.json';
+
+
+
+
 
 const rootNode = document.getElementById('container')
 
 const root = ReactDOMClient.createRoot(rootNode)
 
 root.render(
-<StrictMode>
-  <Filter data={data} />
-</StrictMode>
+  <StrictMode>
+  <App productsArr={productsArr} />
+  </StrictMode>
 )
-
-
-
 

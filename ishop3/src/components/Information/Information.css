@@ -1,0 +1,15 @@
+
+.Information {
+    height: fit-content;
+    background-color: whitesmoke;
+    margin-right: 10px;
+    grid-area: IN;
+}
+
+.Information img {
+    width: 200px;
+}
+
+.Information p {
+    text-align: center;
+}

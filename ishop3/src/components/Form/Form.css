@@ -1,0 +1,40 @@
+
+
+.FormInput1,
+.FormInput2,
+.FormInput3,
+.FormInput4,
+.FormInput5,
+.FormInput6 {
+    width: 300px;
+    margin-top: 5px;
+    padding: 10px 10px;
+    margin-right: 15px;
+}
+
+.FormInput1 {
+    margin-left: 17px;
+}
+
+.FormInput2 {
+    margin-left: 13px;
+}
+
+.FormInput3 {
+    margin-left: 52px;
+}
+
+.FormInput4 {
+    margin-left: 36px;
+}
+
+.FormInput5 {
+    margin-left: 49px;
+}
+
+
+.FormButton {
+    margin: 2px;
+    padding: 10px 10px;
+    margin-top: 10px;
+}

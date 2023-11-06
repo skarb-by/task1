@@ -1,0 +1,43 @@
+.Product .productsImg img {
+    height: 300px;
+}
+
+
+
+
+.ProductButton {
+   display: flex;
+  
+    
+}
+.ProductButton button {
+    margin: 2px;
+    padding: 10px 10px;
+  
+}
+
+
+
+.Product {
+    cursor: pointer;
+}
+
+.Product {
+    text-align: center;
+    align-items: center;
+    box-sizing: border-box;
+
+}
+
+
+
+.Product:hover td {
+    color: rgb(131, 119, 119);
+}
+
+.Product.Active {
+    background-color: rgb(203, 203, 203);
+}
+
+
+
