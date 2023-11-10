@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Br2jsx.css";
+import To from "./To";
 
 class Br2jsx extends React.Component {
   static propTypes = {
@@ -9,17 +10,14 @@ class Br2jsx extends React.Component {
 
   render() {
     const textArray = this.props.text.split(/<br\s?\/?>/);
- 
-    const text = textArray.map((item, id) => {
+
+    const text = textArray.map((el, id) => {
       return (
-          <>
-      {id !== 0 && <br /> }
-          {item}
-        
-        </>
-      
-    )})
-    
+        <To key={id}>
+          {id !== 0 && <br />} {el}
+        </To>
+      );
+    });
 
     return <div className="Br2jsx">{text}</div>;
   }
