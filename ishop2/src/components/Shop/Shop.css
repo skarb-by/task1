@@ -1,3 +1,17 @@
+body {
+    background-color: white;
+}
+
+.ShopContainer {
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    column-gap: 1%;
+    grid-template-areas:
+        "HE HE"
+        "ST IN"
+        "CE .";
+}
 
 .ShopTable {
     background-color: whitesmoke;
@@ -10,18 +24,10 @@
     margin-bottom: 10px;
 }
 
-
-
-
-
-
-
-
 .ProductsThead {
     text-align: center;
     align-items: center;
     box-sizing: border-box;
-
 }
 
 .ShopTable td {
@@ -29,6 +35,3 @@
     color: black;
     border: 2px solid black;
 }
-
-
-

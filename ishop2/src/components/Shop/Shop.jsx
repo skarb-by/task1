@@ -1,10 +1,10 @@
-import React, { Suspense } from "react";
+import "./Shop.css";
+import React from "react";
+import Header from "../Header/Header.jsx";
+import Product from "../Product/Product.jsx";
+import Information from "../Information/Information.jsx";
+import Editing from "../Editing/Editing.jsx";
 import PropTypes from "prop-types";
-import "./App.css";
-import Header from "../components/Header/Header.jsx";
-import Information from "../components/Information/Information.jsx";
-import Editing from "../components/Editing/Editing.jsx";
-const LazyShop = React.lazy(() => import("../components/Shop/Shop.jsx"));
 
 const defaultProduct = {
   id: -1,
@@ -19,9 +19,10 @@ const defaultProduct = {
 };
 
 const placeholderArr = ["Редактирование", "Создание"];
-class App extends React.Component {
+
+class Shop extends React.Component {
   static propTypes = {
-    productsArr: PropTypes.arrayOf(
+    products: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number,
         productName: PropTypes.string,
@@ -78,7 +79,6 @@ class App extends React.Component {
 
   startEdit = (product = defaultProduct) => {
     const onNewProuct = product.id === -1;
-
     this.setShowReduction(true);
     this.setPlaceholder(onNewProuct ? 1 : 0);
     this.setActiveId(product.id);
@@ -104,7 +104,6 @@ class App extends React.Component {
       (el) => el.id === editProduct.id
     );
     !onOldProduct && newArrayProducts.push(editProduct);
-
     this.setShowReduction(false);
     this.setState({
       products: newArrayProducts,
@@ -118,24 +117,49 @@ class App extends React.Component {
   };
 
   render() {
+    const productsElement = this.state.products.map((products) => {
+      return (
+        <Product
+          product={products}
+          key={products.id}
+          onActive={products.id === this.state.activeId}
+          setActive={this.setActiveId}
+          deleteProduct={this.deleteProduct}
+          onEditMode={this.state.onEditMode}
+          startEdit={this.startEdit}
+        />
+      );
+    });
+
+    const theadArr = [
+      "Фотография",
+      "Название",
+      "Описание",
+      "Цвет",
+      "Состав",
+      "Цена",
+      "Количество",
+      "Кнопка",
+    ].map((el) => {
+      return (
+        <td key={el} className="ProductsThead">
+          {el}
+        </td>
+      );
+    });
     const activeProduct = this.state.products.find(
       (p) => p.id === this.state.activeId
     );
+
     return (
-      <div className="container">
+      <div className="ShopContainer">
         <Header />
-        <Suspense
-          fallback={<div style={{ fontSize: "100px" }}>Загрузка...</div>}
-        >
-          <LazyShop
-            products={this.state.products}
-            activeId={this.state.activeId}
-            setActiveId={this.setActiveId}
-            deleteProduct={this.deleteProduct}
-            onEditMode={this.state.onEditMode}
-            startEdit={this.startEdit}
-          />
-        </Suspense>
+        <table className="ShopTable">
+          <thead className="ShopName">
+            <tr>{theadArr}</tr>
+          </thead>
+          <tbody>{productsElement}</tbody>
+        </table>
         <Editing
           setEditMode={this.setEditMode}
           onShowReduction={this.state.onShowReduction}
@@ -146,7 +170,6 @@ class App extends React.Component {
           startEdit={this.startEdit}
           placeholder={this.state.placeholder}
         />
-
         {this.state.products.some((e) => e.id === this.state.activeId) && (
           <Information product={activeProduct} />
         )}
@@ -154,4 +177,5 @@ class App extends React.Component {
     );
   }
 }
-export default App;
+
+export default Shop;
