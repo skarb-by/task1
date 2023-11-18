@@ -1,0 +1,6 @@
+.withRainbowFrame,
+.withRainbowFrameApp {
+  width: 900px;
+  text-align: center;
+  margin: 20px auto;
+}

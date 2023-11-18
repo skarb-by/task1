@@ -8,6 +8,7 @@ class RainbowFrame extends React.Component {
   };
 
   render() {
+    /*
     const cbReduce = (acc, item) => {
       return (
         <div style={{ border: "solid 8px " + item, padding: "5px" }}>{acc}</div>
@@ -20,7 +21,16 @@ class RainbowFrame extends React.Component {
     );
 
     return <div className="RainbowFrame">{rainbowFrame}</div>;
+    
+*/
+let code = this.props.children;
+ this.props.colors.forEach( color => {
+  code = <div style={{ border: "solid 8px " + color, padding: "5px" }}>{code}</div>
+})
+return <div className="RainbowFrame">{code}</div>
+
   }
+  
 }
 
 export default RainbowFrame;
