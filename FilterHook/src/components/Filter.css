@@ -1,13 +1,30 @@
+.FilterHook {
+  display: grid;
+  grid-template-areas:
+    "ST"
+    "CE"
+    "IN";
+}
+
 .Filter {
   text-align: center;
   margin-top: 20px;
+  grid-area: ST;
+
 }
 
 .FilterOut {
+  padding-left: 10px;
   width: 230px;
   height: 200px;
   border: 1px solid black;
   margin: 10px auto 0;
   overflow: auto;
-  white-space: pre
+  white-space: pre;
+  grid-area: CE;
+}
+
+.Info {
+  text-align: center;
+  grid-area: IN;
 }

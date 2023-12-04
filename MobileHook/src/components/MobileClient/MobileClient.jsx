@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import { mobileEvents } from "../Events/Events.jsx";
+import { mobileEvents } from "../Events/Events.js";
 
 const MobileClient = React.memo((props) => {
   const comEl = useRef(null);

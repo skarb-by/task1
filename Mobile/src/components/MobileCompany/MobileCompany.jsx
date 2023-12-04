@@ -5,7 +5,7 @@ import "./MobileCompany.css";
 
 import MobileClient from "../MobileClient/MobileClient.jsx";
 import MobileFilter from "../MobileFilter/MobileFilter.jsx";
-import { mobileEvents } from "../Events/Events.jsx";
+import { mobileEvents } from "../Events/Events.js";
 import Header from "../Header/Header.jsx";
 
 let companyName = "A1 and МТС";

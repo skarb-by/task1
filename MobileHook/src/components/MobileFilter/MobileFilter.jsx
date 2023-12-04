@@ -1,6 +1,6 @@
 import React from "react";
 
-import { mobileEvents } from "../Events/Events.jsx";
+import { mobileEvents } from "../Events/Events.js";
 
 const MobileFilter = React.memo((props) => {
   console.log(`MobileFilter ${props.name} render`);
