@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { mobileEvents } from "../Events/Events.jsx";
+import { mobileEvents } from "../Events/Events.js";
 
 class MobileClient extends React.PureComponent {
   static propTypes = {

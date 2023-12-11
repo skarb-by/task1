@@ -2,7 +2,7 @@ import React from "react";
 
 import { mobileEvents } from "../Events/Events.js";
 
-const MobileFilter = ({name}) => {
+const MobileFilter = ({ name }) => {
   console.log(`MobileFilter render ${name}`);
 
   return (

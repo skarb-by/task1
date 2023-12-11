@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
-
+import React, { useEffect, useRef, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./MobileCompany.css";
-
+import { updateName } from "../../redux/nameSlice.js";
+import { updateStatus } from "../../redux/statusSlice.js";
+import { updateMode } from "../../redux/modeSlice.js";
+import { updateDel, updateSave } from "../../redux/clientsSlice.js";
 import MobileClient from "../MobileClient/MobileClient.jsx";
 import MobileFilter from "../MobileFilter/MobileFilter.jsx";
 import { mobileEvents } from "../Events/Events.js";
 import Header from "../Header/Header.jsx";
 
-const MobileCompany = (props) => {
-  const [clients, setClients] = useState(props.clients);
-  const [modeAdd, setModeAdd] = useState(false);
-  const [status, setStatus] = useState(0);
-  const [name, setName] = useState("A1 and МТС");
+const MobileCompany = () => {
+  const dispatch = useDispatch();
 
   const comEl = useRef(null);
   const famEl = useRef(null);
@@ -19,6 +19,10 @@ const MobileCompany = (props) => {
   const otchEl = useRef(null);
   const balanceEl = useRef(null);
 
+  const comName = useSelector((state) => state.name);
+  const statusSort = useSelector((state) => state.status);
+  const modeStatus = useSelector((state) => state.mode);
+  const clientsBase = useSelector((state) => state.clients);
   useEffect(() => {
     mobileEvents.addListener("Eedit", edit);
     mobileEvents.addListener("Esave", save);
@@ -28,7 +32,7 @@ const MobileCompany = (props) => {
     mobileEvents.addListener("EFilterBlocked", filterBlocked);
     mobileEvents.addListener("EFilterMTS", filterMTS);
     mobileEvents.addListener("EFilterA1", filterA1);
-    document.title = `${name}`;
+    document.title = `${comName.name}`;
 
     return () => {
       mobileEvents.removeListener("Eedit", edit);
@@ -40,7 +44,7 @@ const MobileCompany = (props) => {
       mobileEvents.removeListener("EFilterMTS", filterMTS);
       mobileEvents.removeListener("EFilterA1", filterA1);
     };
-  }, [clients, name]);
+  }, [clientsBase, comName, statusSort]);
 
   function edit(client) {
     alert(
@@ -48,50 +52,24 @@ const MobileCompany = (props) => {
     );
   }
 
-  function newId() {
-    const newClients = [...clients];
-
-    const max = newClients.reduce((acc, curr) =>
-      acc.id > curr.id ? acc.id : curr.id
-    );
-    return max + 1;
+  function save(id) {
+    dispatch(updateSave(id));
   }
-
-  function save(client) {
-    const isOldClients = clients.some((el) => el.id === client.id);
-
-    if (!isOldClients) {
-      setClients([...clients, { ...client, id: newId() }]);
-    } else {
-      const newClientsArr = clients.map((e) =>
-        e.id === client.id ? client : e
-      );
-
-      setClients([...newClientsArr]);
-    }
-  }
-
-  function del(client) {
-    const newClients = [...clients];
-    const newClientsArr = [];
-
-    for (let i = 0; i < newClients.length; i++)
-      if (newClients[i].id !== client.id) newClientsArr.push(newClients[i]);
-
-    setClients(newClientsArr);
+  function del(id) {
+    dispatch(updateDel(id));
   }
 
   function addClient() {
-    setModeAdd(true);
+    dispatch(updateMode({ mode: true }));
   }
 
   function cancel() {
-    setModeAdd(false);
+    dispatch(updateMode({ mode: false }));
   }
 
   function add() {
     if (famEl.current.value !== "" && balanceEl.current.value !== "") {
-      setModeAdd(false);
+      dispatch(updateMode({ mode: false }));
       const elem = {
         com: comEl.current.value,
         fam: famEl.current.value,
@@ -105,29 +83,29 @@ const MobileCompany = (props) => {
   }
 
   function filterAll() {
-    setStatus(0);
-    setName("A1 and МТС");
+    dispatch(updateStatus({ status: 0 }));
+    dispatch(updateName({ name: "A1 and МТС" }));
   }
 
   function filterActive() {
-    setStatus(1);
-    setName("Активные");
+    dispatch(updateStatus({ status: 1 }));
+    dispatch(updateName({ name: "Активные" }));
   }
   function filterBlocked() {
-    setStatus(2);
-    setName("Заблокированные");
+    dispatch(updateStatus({ status: 2 }));
+    dispatch(updateName({ name: "Заблокированные" }));
   }
   function filterMTS() {
-    setStatus(3);
-    setName("МТС");
+    dispatch(updateStatus({ status: 3 }));
+    dispatch(updateName({ name: "МТС" }));
   }
   function filterA1() {
-    setStatus(4);
-    setName("А1");
+    dispatch(updateStatus({ status: 4 }));
+    dispatch(updateName({ name: "А1" }));
   }
 
-  const filteredClients = clients.filter((client) => {
-    switch (status) {
+  const filteredClients = clientsBase.clients.filter((client) => {
+    switch (statusSort.status) {
       case 1:
         return client.balance > 0;
       case 2:
@@ -148,11 +126,7 @@ const MobileCompany = (props) => {
       )),
     [filteredClients]
   );
-  /*
-  const clientsCode = filteredClients.map((client) => {
-    return <MobileClient key={client.id} client={client}  />;
-  });
-*/
+
   const FormAddClient = (
     <tr>
       <td>
@@ -179,11 +153,13 @@ const MobileCompany = (props) => {
       </td>
     </tr>
   );
-
+  const noClient = (
+    <div style={{ fontSize: "50px", color: "red" }}> Клиенты отсутствуют </div>
+  );
   return (
     <div className="MobileCompany">
-      <Header name={name} />
-      <MobileFilter name={name} />
+      <Header name={comName.name} />
+      <MobileFilter name={comName.name} />
       <table>
         <thead>
           <tr>
@@ -199,9 +175,10 @@ const MobileCompany = (props) => {
         </thead>
         <tbody>
           {clientsCode}
-          {modeAdd === true ? FormAddClient : null}
+          {modeStatus.mode === true ? FormAddClient : null}
         </tbody>
       </table>
+      {clientsBase.clients.length === 0 ? noClient : null}
       <button onClick={addClient}>Добавить клиента</button>
     </div>
   );

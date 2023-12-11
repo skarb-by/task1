@@ -1,6 +1,6 @@
 import React from "react";
 
-import { mobileEvents } from "../Events/Events.jsx";
+import { mobileEvents } from "../Events/Events.js";
 
 class MobileFilter extends React.PureComponent {
   render() {

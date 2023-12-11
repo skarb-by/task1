@@ -10,12 +10,16 @@
   text-align: center;
   margin-top: 20px;
   grid-area: ST;
+}
 
+.Filter input::placeholder {
+  color: red;
+  opacity: 0.5;
 }
 
 .FilterOut {
   padding-left: 10px;
-  width: 230px;
+  width: 240px;
   height: 200px;
   border: 1px solid black;
   margin: 10px auto 0;

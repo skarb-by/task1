@@ -30,7 +30,12 @@ const Controls = ({ apply }) => {
     <>
       <div className="Filter">
         <input type="checkbox" checked={checked} onChange={checkbox} />
-        <input type="text" value={input} onChange={onChange} />
+        <input
+          type="text"
+          placeholder="введите слово"
+          value={input}
+          onChange={onChange}
+        />
         <button onClick={clear}>сброс</button>
       </div>
       <div className="Info">
